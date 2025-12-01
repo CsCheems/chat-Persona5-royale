@@ -1,193 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
 * {
-	margin: 0;
-	padding: 0;
-	--margin: 10px;
-	--border-radius: 15px;
-	--line-spacing: 1em;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-	overflow: hidden;
-}
-
-html {
-	width: 100vw;
-	height: 100vh;
-	scroll-behavior: smooth;
-	font-size: 30px;
-	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-	color: white;
-	text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-	overflow-wrap: break-word;
-}
-
-#status-container {
-	font-family: "consolas";
-	font-weight: 500;
-	font-size: 30px;
-	text-align: center;
-	background-color: #D12025;
-	color: white;
-	padding: 10px;
-	border-radius: 10px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+    overflow: hidden;
+    background-color: transparent;
+    font-family: 'Fjalla One', sans-serif;
 }
 
 #mainContainer {
-	position: absolute;
-	height: calc(100% - 2 * var(--margin));
-	width: calc(100% - 2 * var(--margin));
-	margin: var(--margin);
-}
-
-#rewardContenedor {
-	padding: 10px;
-}
-
-#mensajeContenedor{
-	padding: 10px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: calc(100% - 40px);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 #listaMensajes {
-	display: flex;
-	flex-direction: column-reverse;
-	justify-content: flex-start;
-	position: absolute;
-	left: 0;
-	width: 100%;
-	bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-bottom: 20px;
 }
 
 li {
-	list-style: none;
-	overflow: hidden;
-	height: 0;
-	transition: all 1s ease-in-out;
+    list-style: none;
+    width: 100%;
+    position: relative;
 }
 
-.slideIn li {
-	transition: all 0.5s ease-out;
-	/* opacity: 0; */
+.mensaje-row {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+    padding: 5px;
+    opacity: 0;
+    transform: skewX(-5deg);
+    animation: phantom-appear 0.2s cubic-bezier(0.1, 0.9, 0.2, 1.2) forwards;
+    position: relative;
+    z-index: 1;
 }
 
-.slideIn li.show {
-	/* opacity: 1; */
+.p5-portrait-container {
+    position: relative;
+    width: 85px;
+    height: 85px;
+    margin-right: -10px;
+    z-index: 50;
+    transform: rotate(-3deg);
+    flex-shrink: 0;
 }
 
-#esteDivEsParaQuePuedaCalcularQueTanGrandePuedeSerCadaMensajeAntesDeQueSeaAgregadoAlaListaxd {
-	opacity: 0;
+.portrait-bg {
+    position: absolute;
+    inset: 0;
+    background: #000;
+    clip-path: polygon(15% 0, 100% 0, 85% 100%, 0% 100%);
+    filter: drop-shadow(2px 2px 0px white) drop-shadow(-2px -2px 0px white);
 }
 
-#primerMensaje,
-#chatCompartido {
-	display: none;
-	font-weight: 500;
-	font-size: 1.1em;
+.avatar-img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    clip-path: polygon(15% 0, 100% 0, 85% 100%, 0% 100%);
 }
 
-@keyframes colorBucle {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.p5-text-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 5;
+    margin-left: 15px;
+    position: relative;
 }
 
-.rotar-color {
-  background: linear-gradient(270deg, #833ab4, #fd1d1d, #fcb045, #833ab4);
-  background-size: 600% 600%;
-  animation: colorBucle 6s ease infinite;
+.username-tag {
+    background: black;
+    color: white;
+    padding: 4px 15px;
+    font-size: 1.1em;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    width: fit-content;
+    transform: skewX(-10deg) translateX(5px) translateY(8px);
+    border: 2px solid white;
+    z-index: 60;
+    text-shadow: 2px 2px 0px #D12025;
 }
 
-#user-info{
-	margin-bottom: 5px;
+.badges-container {
+    display: flex;
 }
 
-.avatar {
-	height: 2em;
-	margin: 1px;
-	transform: translate(0px, 0.25em);
-	border-radius: 50%;
+.speech-bubble {
+    position: relative;
+    background: black;
+    color: white;
+    padding: 15px 30px 15px 40px;
+    font-size: 2.5rem;
+    min-width: 250px;
+    clip-path: polygon(3% 0%, 100% 0%, 97% 100%, 0% 100%);
+    filter: drop-shadow(3px 0px 0px white) drop-shadow(-3px 0px 0px white) drop-shadow(0px 3px 0px white) drop-shadow(0px -3px 0px white);
+    background-image: radial-gradient(#333 15%, transparent 15%);
+    background-size: 6px 6px;
+    z-index: 10;
 }
 
-.timestamp {
-	background: #adadad46;
-	border-radius: 1em;
-	font-size: 1em;
-	padding: 0.15em 0.5em;
+
+.red-accent {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 15px;
+    background: #D12025;
 }
 
-.bits {
-	background: #adadad46;
-	border-radius: calc(var(--border-radius) / 2);
-	font-size: 0.7em;
-	padding: 5px 10px;
+.zigzag-connector {
+    display: none;
+    position: absolute;
+    top: -55px;
+    left: 42px;
+    width: 35px;
+    height: 80px;
+    background: black;
+    z-index: -1;
+    transition: transform 0.2s;
+    background-image: radial-gradient(#333 15%, transparent 15%);
+    background-size: 6px 6px;
 }
 
-.badge {
-	height: 1.2em;
-	margin: 1px;
-	transform: translate(0px, 0.25em);
+.zigzag-connector.zig-left {
+    transform: skewX(30deg);
+}
+
+.zigzag-connector.zig-right {
+    transform: skewX(-30deg);
+    left: 52px;
+}
+
+.mensaje-row:nth-child(even) .zigzag-connector {
+    transform: skewX(-30deg);
+    left: 50px;
+}
+
+.mensaje-row.agrupado {
+    margin-top: 1px;
+}
+
+.mensaje-row.agrupado .p5-portrait-container {
+    visibility: hidden;
+    height: 0;
+    margin-bottom: 0;
+}
+
+.mensaje-row.agrupado .username-tag {
+    display: none;
+}
+
+.mensaje-row.agrupado .zigzag-connector {
+    display: block;
+}
+
+@keyframes phantom-appear {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px) skewX(-20deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) skewX(-5deg);
+    }
+}
+
+.hide-anim {
+    animation: phantom-exit 0.4s forwards;
+}
+
+@keyframes phantom-exit {
+    to {
+        opacity: 0;
+        transform: translateX(50px) skewX(10deg);
+    }
 }
 
 .emote {
-	height: 1.5em;
-	margin: 1px;
-	transform: translate(0px, 0.4em);
+    height: 1.3em;
+    vertical-align: middle;
 }
 
-
-.productImage {
-	height: 15em;
-	border-radius: 0.25em;
-	transform: translate(0px, 0.25em);
+.badge {
+    height: 1em;
+    margin-right: 5px;
 }
-
-
-
-#badgeList {
-	margin: 0 5px;
-}
-
-#username,
-#title {
-	font-weight: 700;
-}
-
-.title {
-	font-weight: 700;
-}
-
-#respuesta {
-	display: none;
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	font-size: 1.1em;
-	opacity: 0.7;
-	margin-bottom: 4px;
-}
-
-#mensaje {
-	font-weight: 400;
-	line-height: 1em;
-
-}
-
-#channel_point{
-	width: 20px;
-}
-
-#bodyReward{
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-}
-

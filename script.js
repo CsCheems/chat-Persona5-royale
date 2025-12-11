@@ -246,8 +246,8 @@ const mockMessage = {
   message: {
     userId: "123456789",
     badges: [
-      { imageUrl: "https://static-cdn.jtvnw.net/badges/v1/fc2c2b36-df3b-4e2b-a480-5f49229cf3d4/3" }, // Verified
-      { imageUrl: "https://static-cdn.jtvnw.net/badges/v1/b3d243c6-4f9f-4d20-af04-5f15ad168a34/3" }  // Twitch Turbo
+      { imageUrl: "https://static-cdn.jtvnw.net/badges/v1/fc2c2b36-df3b-4e2b-a480-5f49229cf3d4/3" }, 
+      { imageUrl: "https://static-cdn.jtvnw.net/badges/v1/b3d243c6-4f9f-4d20-af04-5f15ad168a34/3" } 
     ],
     message: "¡Esto es un mensaje de prueba! PogChamp Wow increíble!",
     isReply: false,

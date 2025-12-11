@@ -21,7 +21,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  background-color: transparent;
+  background-color: red;
 }
 
 #listaMensajes {
@@ -39,7 +39,7 @@ li {
 
 .mensaje-row {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   width: 100%;
   padding: 5px;
   opacity: 0;
@@ -58,6 +58,7 @@ li {
   transform: rotate(-3deg);
   flex-shrink: 0;
   z-index: 1;
+  transform: translate(5px,65px);
 }
 
 .portrait-bg {
@@ -96,7 +97,7 @@ li {
   gap: 8px;
   white-space: nowrap;
   width: fit-content;
-  transform: skewX(-10deg) translateX(5px) translateY(1px);
+  transform: skewX(-10deg) translateX(75px) translateY(15px);
   border: 2px solid white;
   z-index: 60;
   text-shadow: 2px 2px 0px #d12025;
@@ -104,7 +105,6 @@ li {
 
 .badges-container {
   display: flex;
-  transform: translateX(-50px);
 }
 
 .speech-bubble-supercontainer {
@@ -113,7 +113,6 @@ li {
   align-items: center;
 }
 
-/* TAIL COMPLETO */
 .speech-bubble-tail {
   position: absolute;
   left: -50px;     
@@ -125,7 +124,6 @@ li {
   z-index: 80;
 }
 
-/* BASE (parte gruesa del tail) */
 .speech-bubble-tail-base {
   width: 60%;
   height: 60%;
@@ -134,7 +132,6 @@ li {
   filter: drop-shadow(2px 0px 0px white);
 }
 
-/* TIP (punta del tail) */
 .speech-bubble-tail-tip {
   width: 50%;
   height: 50%;
@@ -172,7 +169,7 @@ li {
   min-width: 350px;
   clip-path: polygon(3% 3%, 97% 3%, 95% 97%, 0% 100%);
   filter: drop-shadow(3px 0px 0px white) drop-shadow(-3px 0px 0px white)
-    drop-shadow(0px 3px 0px white) drop-shadow(0px -3px 0px white);
+  drop-shadow(0px 3px 0px white) drop-shadow(0px -3px 0px white);
   /* background-image: radial-gradient(#fff 15%, transparent 5%); */
   background-size: 6px 6px;
   z-index: 10;

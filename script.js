@@ -129,9 +129,13 @@ async function MensajeChat(data) {
     if (mensajesAgrupados && listaMensajes.children.length > 0) {
         if (ultimoUsuario === uid) {
             rowDiv.classList.add("agrupado");
+            const tail = instancia.querySelector(".speech-bubble-tail");
+            if (tail) tail.style.display = "none";
+
             zigzagState = !zigzagState;
             if(zigzagState) connector.classList.add("zig-right");
             else connector.classList.add("zig-left");
+
         } else {
             zigzagState = false;
         }
@@ -231,3 +235,37 @@ function setConnectionStatus(connected){
         statusContainer.style.opacity = 1;
     }
 }
+
+
+const mockMessage = {
+  user: {
+    name: "PhantomFox",
+    color: "#D12025"
+  },
+  text: "¡Esto es un mensaje de prueba! PogChamp Wow increíble!",
+  message: {
+    userId: "123456789",
+    badges: [
+      { imageUrl: "https://static-cdn.jtvnw.net/badges/v1/fc2c2b36-df3b-4e2b-a480-5f49229cf3d4/3" }, // Verified
+      { imageUrl: "https://static-cdn.jtvnw.net/badges/v1/b3d243c6-4f9f-4d20-af04-5f15ad168a34/3" }  // Twitch Turbo
+    ],
+    message: "¡Esto es un mensaje de prueba! PogChamp Wow increíble!",
+    isReply: false,
+    reply: {
+      userName: "Morgana"
+    }
+  },
+  emotes: [
+    {
+      name: "PogChamp",
+      imageUrl: "https://static-cdn.jtvnw.net/emoticons/v2/305954156/default/dark/3.0"
+    },
+    {
+      name: "Wow",
+      imageUrl: "https://static-cdn.jtvnw.net/emoticons/v2/111700/default/dark/3.0"
+    }
+  ],
+  messageId: "test-msg-001"
+};
+
+//MensajeChat(mockMessage);
